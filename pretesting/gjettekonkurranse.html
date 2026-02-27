@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Gjett anttall erter i glasset under og vinn en premie (JS)</h1>
+    <img src="images/pea_jar2.png">
+    <input type="number" id="num_erter"><button onclick="gjett()">Gjett</button>
+     
+    <script>
+        function gjett(){
+            if (num_erter.value == 367) {
+                document.write("<img src='images/winner.jpg'>")
+            } else {
+                document.write("<img src='images/youLoose.jpg'>")
+                
+            }
+        }
+    </script>
+</body>
+</html>

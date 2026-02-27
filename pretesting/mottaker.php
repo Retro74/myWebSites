@@ -6,8 +6,8 @@
     <title>Mottaker</title>
 </head>
 <body>
-        Fornavn: <?php  echo($_POST["txt_fornavn"])   ?><br>
-        Etternavn: <?php  echo($_POST["txt_etternavn"])   ?><br>
-        Alder: <?php  echo($_POST["num_alder"])   ?><br>
+        Fornavn: <?php  echo($_GET["txt_fornavn"])   ?><br>
+        Etternavn: <?php  echo($_GET["txt_etternavn"])   ?><br>
+        Alder: <?php  echo($_GET["num_alder"])   ?><br>
 </body>
 </html>

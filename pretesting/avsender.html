@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Registeringsskjema</h1>
-<form action="mottaker.php" method="POST">
+<form action="mottaker.php" method="GET">
     Fornavn: <input type="text" id="txt_fornavn" name="txt_fornavn"><br>
     Etternavn: <input type="text" id="txt_etternavn" name="txt_etternavn"><br>
     Alder: <input type="number" id="num_alder" name="num_alder"><br>
@@ -15,6 +15,7 @@
         Send inn
     </button>
 </form>
+<a href="mottaker.php?txt_fornavn=Roger&txt_etternavn=Mik&num_alder=52">Testing</a>
 
 
     
