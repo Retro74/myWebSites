@@ -29,8 +29,6 @@
         <button type="submit">Gjett antall erter</button>
     </form>
     <?php } else { 
-
-
         echo("Du har gjettet før! Vent til i morgen."); 
 
         echo("<a href='removeSession.php'>Fjern session her</a>");
