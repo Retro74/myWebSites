@@ -12,23 +12,15 @@
 ?>
 <?php
     //SQL-spørringen 
-    $sql = "SELECT * FROM tbl_brukere where brukernavn = 'bruker1'";
+    $sql = "SELECT * FROM tbl_brukere";
     //Kjører spørringen mot databasen og resultatet settes i datasettet 
     $datasett = $tilkobling->query($sql);
-
-$rad = mysqli_fetch_array($datasett);
-echo $rad["bruker_id"];
-
-echo $rad["passord_hash"];
-
-if (password_verify('abc123', $rad["passord_hash"])) {
-    echo "Passordet er riktig.";
-} else {
-    echo "Feil passord.";
-}
-
-
 ?>
-
+<?php if($rad = mysqli_fetch_array($datasett)) { ?>
+    brukernavn: <?php echo $rad["brukernavn"]; ?>
+    passord: <?php echo $rad["passord_hash"]; ?>
+<?php } else {?>
+    <p>Tomt</p>
+<?php } ?>
 </body>
 </html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <form action="" method="POST">
+        <input type="text"
+       id="sel_postnummer"
+       name="sel_postnummer"
+       placeholder="Skriv inn Postnummer" onchange="">
+
+    </form>
+    <!-- Inputfelt for Ajax-oppslag -->
+
+
+
+<!-- Div som viser resultatet -->
+
+<div id="div_Poststed"></div>
+
+<!-- Ajax-kall med jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+$(document).ready(function () {
+
+    
+// Kjør Ajax-oppslag når brukeren skriver i inputfeltet
+
+    $("#sel_postnummer").on("input", function () {
+
+        var verdi = $(this).val().trim();
+
+        
+// Ikke slå opp hvis feltet er tomt
+
+        if (verdi === "") {
+            $("#div_Poststed").html("");
+            return;
+        }
+
+        
+// Send Ajax POST-forespørsel til PHP-siden
+
+        $.ajax({
+            url:  "ajax_postnummerOppslag.php",
+            type: "POST",
+            data: {
+                Postnummer: verdi,
+                csrf_token: $("input[name='csrf_token']").val()
+            },
+            dataType: "json",
+
+            success: function (svar) {
+                
+// Oppdater resultdiven basert på svaret fra PHP
+
+                if (svar.funnet) {
+                    $("#div_Poststed").html(
+                        "Postnummer finnes. Poststed: " + svar.Poststed
+                    );
+                } else {
+                    $("#div_Poststed").html("Postnummer ble ikke funnet.");
+                }
+            },
+
+            error: function () {
+                $("#div_Poststed").html("Feil ved oppslag. Prøv igjen.");
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
