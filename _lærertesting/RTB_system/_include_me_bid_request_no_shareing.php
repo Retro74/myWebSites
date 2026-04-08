@@ -8,11 +8,14 @@
 $payload = json_encode([
     'side'       => $_GET['side'] ?? 'forside',
 ]);
+$docRoot = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+$dirNow  = str_replace('\\', '/', __DIR__);
+$baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace($docRoot, '', $dirNow) . '/';
 
 $dsper = [
-    'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/dsp1.php',
-    'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/dsp2.php',
-    'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/dsp3.php',
+    $baseUrl . 'dsp1.php',
+    $baseUrl . 'dsp2.php',
+    $baseUrl . 'dsp3.php',
 ];
 
 $bud = [];

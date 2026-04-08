@@ -5,13 +5,16 @@ header('Content-Type: application/json');
 $data = json_decode(file_get_contents('php://input'), true);
 
 $bud = rand(180, 300); // Mer verdi med brukerdata
+$docRoot = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+$dirNow  = str_replace('\\', '/', __DIR__);
+$bildeUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace($docRoot, '', $dirNow) . '/';
 
 echo json_encode([
     'budgiver' => 'Lean Studio AS',
     'bud'      => $bud,
     'annonse'  => [
         'tittel' => 'Hår med stil - Bestill time i dag',
-        'bilde'  => 'lean.png',
+        'bilde'  => $bildeUrl . 'lean.png',
         'url'    => 'https://leanstudio.no/'
     ]
 ]);

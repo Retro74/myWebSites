@@ -5,13 +5,16 @@ header('Content-Type: application/json');
 $data = json_decode(file_get_contents('php://input'), true);
 
 $bud = rand(160, 270); // Mer verdi med brukerdata
+$docRoot = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+$dirNow  = str_replace('\\', '/', __DIR__);
+$bildeUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace($docRoot, '', $dirNow) . '/';
 
 echo json_encode([
     'budgiver' => 'Trendhim AS',
     'bud'      => $bud,
     'annonse'  => [
         'tittel' => 'Herreklokker med stil',
-        'bilde'  => 'klokke.jpg',
+        'bilde'  => $bildeUrl . 'klokke.jpg',
         'url'    => 'https://www.trendhim.no/klokker-for-menn'
     ]
 ]);

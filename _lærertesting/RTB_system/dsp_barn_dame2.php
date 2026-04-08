@@ -5,13 +5,16 @@ header('Content-Type: application/json');
 $data = json_decode(file_get_contents('php://input'), true);
 
 $bud = rand(110, 190); // Mer verdi med brukerdata
+$docRoot = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+$dirNow  = str_replace('\\', '/', __DIR__);
+$bildeUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace($docRoot, '', $dirNow) . '/';
 
 echo json_encode([
     'budgiver' => 'Next Kids',
     'bud'      => $bud,
     'annonse'  => [
         'tittel' => 'Nye kleskolleksjoner!',
-        'bilde'  => 'tops-data.jpg',
+        'bilde'  => $bildeUrl . 'tops-data.jpg',
         'url'    => 'https://www.next.no/no/girls'
     ]
 ]);

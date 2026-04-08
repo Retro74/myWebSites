@@ -5,13 +5,16 @@ header('Content-Type: application/json');
 $data = json_decode(file_get_contents('php://input'), true);
 
 $bud = rand(120, 200); // Mer verdi med brukerdata
+$docRoot = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+$dirNow  = str_replace('\\', '/', __DIR__);
+$bildeUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace($docRoot, '', $dirNow) . '/';
 
 echo json_encode([
     'budgiver' => 'Teen Stickers - Norge',
     'bud'      => $bud,
     'annonse'  => [
         'tittel' => 'Nye FIFA-kort – kun i dag!',
-        'bilde'  => 'fifakort.jpg',
+        'bilde'  => $bildeUrl . 'fifakort.jpg',
         'url'    => 'https://www.tenstickers-norge.com/'
     ]
 ]);

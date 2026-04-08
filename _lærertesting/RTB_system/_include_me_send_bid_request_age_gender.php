@@ -66,7 +66,12 @@ $dspKart = [
 
 // --- Finn riktig DSP-liste for denne brukeren ---
 $segmentNokkel = $aldersgruppe . '_' . $kjonn;
-$baseUrl       = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/';
+
+$docRoot = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+$dirNow  = str_replace('\\', '/', __DIR__);
+$baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . str_replace($docRoot, '', $dirNow) . '/';
+
+//$baseUrl       = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/';
 
 if (isset($dspKart[$segmentNokkel])) {
     $dsper = array_map(fn($fil) => $baseUrl . $fil, $dspKart[$segmentNokkel]);
