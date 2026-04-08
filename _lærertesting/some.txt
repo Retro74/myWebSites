@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +10,43 @@
 
 
     <form action="" method="POST">
-        <input type="text"
+        
+<!-- HTML/PHP til skjult CSRF-token i form/skjema-->
+<input type="hidden" name="csrf_token"
+      value="d1b2416717f21a0d682ace65250a7953b1e7dcfc1e74d6f457078de97e27dc65">
+
+<!--     <input type="text"
        id="sel_postnummer"
        name="sel_postnummer"
        placeholder="Skriv inn Postnummer" onchange="">
+-->
+       <select name="sel_postnummer">
+    // For hver rad i datasettet lager PHP ett valg i nedtrekkslisten
 
+            <option value="0001">
+            0001        </option>
+            <option value="0010">
+            0010        </option>
+            <option value="0015">
+            0015        </option>
+            <option value="0018">
+            0018        </option>
+            <option value="0021">
+            9960        </option>
+            <option value="9980">
+            9980        </option>
+            <option value="9981">
+            9981        </option>
+            <option value="9982">
+            9982        </option>
+            <option value="9990">
+            9990        </option>
+            <option value="9991">
+            9991        </option>
+            <option value="﻿Pos">
+            ﻿Pos        </option>
+    </select>
+    
     </form>
     <!-- Inputfelt for Ajax-oppslag -->
 
@@ -30,10 +63,10 @@ $(document).ready(function () {
 
     
 // Kjør Ajax-oppslag når brukeren skriver i inputfeltet
-
-    $("#sel_postnummer").on("input", function () {
+    $("#sel_postnummer").on("change", function () {
 
         var verdi = $(this).val().trim();
+        console.log(verdi);
 
         
 // Ikke slå opp hvis feltet er tomt
