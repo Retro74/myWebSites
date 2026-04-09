@@ -56,10 +56,9 @@
     <h1>Velkommen til min nettside</h1>
     <p>Her er innholdet på siden.</p>
     <?php
-//$_SESSION['kjonn'] = "dame";
-//$_SESSION['alder'] = 44;
-        $cookiesGodtatt = isset($_COOKIE['cookies_godtatt']) && $_COOKIE['cookies_godtatt'] === 'ja';
-    if ($cookiesGodtatt) 
+$_SESSION['kjonn'] = "dame";
+$_SESSION['alder'] = 44;
+    if (isset($_COOKIE['cookies_godtatt']) && $_COOKIE['cookies_godtatt'] === 'ja';) 
       {   include('../RTB_system/_include_me_send_bid_request_age_gender.php'); 
         }else {
             include('../RTB_system/_include_me_bid_request_no_shareing.php'); 
