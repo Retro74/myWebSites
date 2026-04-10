@@ -20,9 +20,9 @@
 <br>
     <h1>PHP-del</h1>
 
-<form action="cookie_Oppgave1.php" method="POST"><input type="submit" value="Les alle Cookies med PHP"></form>
+<form action="cookie_Oppgave0.php" method="POST"><input type="submit" value="Les alle Cookies med PHP"></form>
 <form method="GET"><input type="submit" value="Les verdien til Cookies med PHP som heter: "> <input type="text" id="readCookieWithName" name="readCookieWithName"></form>
-<form action="cookie_Oppgave1.php" method="POST"><input type="text" id="sendCookieName" name="sendCookieName" placeholder="Cookie-navn"><input type="text" id="sendCookievalue" name="sendCookievalue" placeholder="Cookie-verdi"><br>
+<form action="cookie_Oppgave0.php" method="POST"><input type="text" id="sendCookieName" name="sendCookieName" placeholder="Cookie-navn"><input type="text" id="sendCookievalue" name="sendCookievalue" placeholder="Cookie-verdi"><br>
     <input type="submit" value="Lag Cookie med PHP"></form>
 
 <div style="background:rgb(205, 218, 255); border: 1px solidrgb(23, 7, 255); padding:5px; border-radius: 4px; margin-top: 1rem;"><h3>🍪 My Cookies (lest av PHP) 🍪</h3>
@@ -32,7 +32,7 @@
         echo($_GET["readCookieWithName"] . " = " . $_COOKIE[$_GET["readCookieWithName"]]);
     }else{
         if (isset($_POST["sendCookieName"]) && $_POST["sendCookieName"]!="" && $_POST["sendCookievalue"] != ""){
-            setcookie($_POST["sendCookieName"], $_POST["sendCookievalue"], time() + 3600, '/');
+            setcookie($_POST["sendCookieName"], $_POST["sendCookievalue"], time() + (3600*24*30), '/');
         }
         foreach ($_COOKIE as $navn => $verdi) {
             echo $navn . ' = ' . $verdi . '<br>';
@@ -43,7 +43,9 @@
 
 <script>
 function lagreCookie() {
-    document.cookie = cookieName.value + "=" + cookievalue.value + "; path=/";
+    const utloper = new Date();
+    utloper.setDate(utloper.getDate() + 30);
+    document.cookie = cookieName.value + "=" + cookievalue.value + ";  expires=" + utloper.toUTCString() + "; path=/";
     }
 function visCookies() {
     document.getElementById("output_js").innerText ="";
@@ -68,10 +70,8 @@ function getCookie(navn) {
     }
     return null;
 }
-
 window.onload = function() {
-    visCookies();
-};
+    visCookies();};
 </script>
 </body>
 </html>
