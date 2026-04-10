@@ -40,7 +40,7 @@
     } ?>
 </div>
 </div>
-
+ 
 <script>
 function lagreCookie() {
     const utloper = new Date();
