@@ -12,16 +12,23 @@ $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 
 include_once("mailer_config.php")
-//$mail->Username = 'navn@gmail.com';
+//"mailer_config.php" inneholder de to linjene under.
+//Sett inn passende info i denne filen, 
+// Om du bruker git,- Husk å legge inn:  **/mailer_config.php
+// og evt: **/PHPMailer/   
+
+// $mail->Username = 'navn@gmail.com';
 //$mail->Password = 'App-passord';
 
 
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 
+//Disse må du selv sette
 $mail->setFrom('no-reply@gmail.com', 'Ingen svar');
-$mail->addAddress('brukerens@mail.com');
+$mail->addAddress('brukerens.mailadresse@mail.com');
 
+//Disse må du endre og sette inn passende tekst selv
 $mail->Subject = 'Subect-feltet';
 $mail->Body = 'Mailens innhold';
 
