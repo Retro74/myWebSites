@@ -10,7 +10,9 @@
     <input type="text" id="cookieName" placeholder="Cookie-navn">
     <input type="text" id="cookievalue" placeholder="Cookie-verdi"><br>
     <button onclick="lagreCookie()">Lagre Cookie</button>
-    <button onclick="visCookies()">Hent Cookies</button><br>
+    <button onclick="visCookie()">Vis Cookie med navn</button>
+    
+    <button onclick="visCookies()">Hent Alle Cookies</button><br>
     <button onclick="slettCookie()">Slett Cookies med navn</button>
     <button onclick="slettAlleCookies()">Slett alle Cookies</button><br>
 
@@ -45,7 +47,7 @@
 function lagreCookie() {
     const utloper = new Date();
     utloper.setDate(utloper.getDate() + 30);
-    document.cookie = cookieName.value + "=" + cookievalue.value + ";  expires=" + utloper.toUTCString() + "; path=/";
+    document.cookie = cookieName.value + "=" + cookievalue.value + "; expires=" + utloper.toUTCString() + "; path=/";
     }
 function visCookies() {
     document.getElementById("output_js").innerText ="";
@@ -54,7 +56,9 @@ function visCookies() {
      }
 
 function slettAlleCookies(){
+    console.log("her");
     document.cookie.split('; ').forEach(cookie => {
+        console.log(cookie);
         const navn = cookie.split('=')[0];
         document.cookie = navn + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
     });
@@ -62,6 +66,10 @@ function slettAlleCookies(){
 function slettCookie() {
     document.cookie = cookieName.value + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
     }
+
+function visCookie(){
+    output_js.innerHTML=cookieName.value + " = " + getCookie(cookieName.value);
+}
 function getCookie(navn) {
     const cookie_array = document.cookie.split('; ');
     for (const cookie of cookie_array) {

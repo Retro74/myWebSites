@@ -1,2 +1,5 @@
 # e-postkonfigurasjon
 **/mailer_config.php
+
+#PHPMailer kan lastes ned her: https://github.com/PHPMailer/PHPMailer
+**/PHPMailer/
