@@ -1,4 +1,5 @@
 <?php
+//Sjekk at stiene blir riktig o fohold ti lhvor denne filen ligger
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/Exception.php';
@@ -26,7 +27,7 @@ $mail->Port = 587;
 
 //Disse må du selv sette
 $mail->setFrom('no-reply@gmail.com', 'Ingen svar');
-$mail->addAddress('brukerens.mailadresse@mail.com');
+$mail->addAddress('mottaker.brukerens.mailadresse@mail.com');
 
 //Disse må du endre og sette inn passende tekst selv
 $mail->Subject = 'Subect-feltet';
