@@ -12,13 +12,12 @@ $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 
-include_once("mailer_config.php")
-//"mailer_config.php" inneholder de to linjene under.
-//Sett inn passende info i denne filen, 
-// Om du bruker git,- Husk å legge inn:  **/mailer_config.php
-// og evt: **/PHPMailer/   
+include_once("mailer_config.php");
+//"mailer_config.php" inneholder de to linjene som er utkommentert under.
+//Sett inn passende info i denne filen. 
+// Om du bruker git,- Husk å legge inn:  **/mailer_config.php, og evt: **/PHPMailer/   
 
-// $mail->Username = 'navn@gmail.com';
+//$mail->Username = 'navn@gmail.com';
 //$mail->Password = 'App-passord';
 
 
